@@ -6,8 +6,10 @@ public class EnemySpawnerScript : MonoBehaviour {
 
     public GameObject enemy;
     public int maxNumEnemies;
+    public AudioSource[] sounds;
 
     private int m_enemyCount = 0;
+    private bool m_soundPlaying = true;
 
 	// Use this for initialization
 	void Start () {
@@ -40,4 +42,20 @@ public class EnemySpawnerScript : MonoBehaviour {
             Instantiate(enemy, position, transform.rotation);
         }
 	}
+
+    public void ToggleSound()
+    {
+        m_soundPlaying = !m_soundPlaying;
+        foreach(AudioSource sound in sounds)
+        {
+            if (m_soundPlaying)
+            {
+                sound.enabled = true;
+            }
+            else
+            {
+                sound.enabled = false;
+            }
+        }
+    }
 }

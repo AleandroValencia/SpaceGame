@@ -22,6 +22,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject bullet;
     public List<GameObject> backgrounds;
 
+    public AudioSource m_shootSound;
+    public AudioSource m_boostSound;
+
     private Rigidbody2D m_RigidBody;
     private bool m_boost = false;
 
@@ -36,6 +39,7 @@ public class PlayerScript : MonoBehaviour
         m_cameraHalfWidth = m_cameraHalfHeight / 5.4f * 9.6f;
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_fuel = maxFuel;
+        GetComponent<ParticleSystem>().Stop();
     }
 
     // Update is called once per frame
@@ -90,10 +94,29 @@ public class PlayerScript : MonoBehaviour
                 {
                     m_RigidBody.AddForce(_forward * speed * boostMultiplier * Time.deltaTime);
                     m_fuel -= consumptionRate;
+                    if (!m_boostSound.isPlaying)
+                    {
+                        m_boostSound.Play();
+                    }
+                    
+                    if (!GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        GetComponent<ParticleSystem>().Play();
+                    }
                 }
                 else
                 {
                     m_RigidBody.AddForce(_forward * speed * Time.deltaTime);
+
+                    if (m_boostSound.isPlaying)
+                    {
+                        m_boostSound.Stop();
+                    }
+
+                    if (GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        GetComponent<ParticleSystem>().Stop();
+                    }
                 }
             }
         }
@@ -106,6 +129,7 @@ public class PlayerScript : MonoBehaviour
             bullet.GetComponent<BulletScript>().SetUp(_forward);
             bullet.transform.position = transform.position;
             Instantiate(bullet);
+            m_shootSound.Play();
         }
     }
 
@@ -121,6 +145,11 @@ public class PlayerScript : MonoBehaviour
             if (m_fuel < maxFuel)
             {
                 m_fuel += recoverFuelRate;
+            }
+
+            if (m_boostSound.isPlaying)
+            {
+                m_boostSound.Stop();
             }
         }
     }

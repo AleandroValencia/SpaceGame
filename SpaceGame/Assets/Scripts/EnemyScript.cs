@@ -22,9 +22,13 @@ public class EnemyScript : MonoBehaviour
     private float m_seekRadiusSqr = 8.0f;
     private float m_maxChaseDistanceSqr = 64.0f;
 
+    private AudioSource m_deathSound;
+
     // Use this for initialization
     void Start()
     {
+        m_deathSound = GameObject.FindGameObjectWithTag("DeadSound").GetComponent<AudioSource>();
+
         m_player = GameObject.FindGameObjectWithTag("Player");
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_particles = GetComponent<ParticleSystem>();
@@ -154,6 +158,7 @@ public class EnemyScript : MonoBehaviour
             m_particles.Play();
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<PolygonCollider2D>().enabled = false;
+            m_deathSound.Play();
         }
     }
 
