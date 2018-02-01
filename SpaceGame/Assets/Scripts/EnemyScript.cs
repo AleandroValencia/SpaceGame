@@ -101,6 +101,17 @@ public class EnemyScript : MonoBehaviour
                 transform.position = position;
                 GetComponent<SpriteRenderer>().enabled = true;
                 GetComponent<PolygonCollider2D>().enabled = true;
+                SetNewDestination();
+
+                if (Random.value >= 0.5f)
+                {
+                    m_seek = true;
+                }
+                else
+                {
+                    m_seek = false;
+                }
+
                 m_dead = false;
             }
         }
