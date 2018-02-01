@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1957954360194898, guid: 0c75ad52c88696f4d8a36f5985ccddb5, type: 2}
-  maxNumEnemies: 10
+  maxNumEnemies: 3
   sounds:
   - {fileID: 580312273}
   - {fileID: 284377567}
