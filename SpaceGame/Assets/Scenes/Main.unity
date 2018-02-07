@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1957954360194898, guid: 0c75ad52c88696f4d8a36f5985ccddb5, type: 2}
-  maxNumEnemies: 3
+  maxNumEnemies: 6
   sounds:
   - {fileID: 580312273}
   - {fileID: 284377567}
@@ -1752,9 +1752,9 @@ MonoBehaviour:
   speed: 500
   boostMultiplier: 5
   maxVelocity: 7.5
-  maxFuel: 100
+  maxFuel: 310
   consumptionRate: 1
-  recoverFuelRate: 0.3
+  recoverFuelRate: 300
   bullet: {fileID: 1198096446415414, guid: 71704f7cd6c533a47927818216653078, type: 2}
   backgrounds:
   - {fileID: 14837592}
@@ -1862,7 +1862,7 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -1912,7 +1912,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1243171729
+  randomSeed: 714067655
   InitialModule:
     serializedVersion: 3
     enabled: 1
